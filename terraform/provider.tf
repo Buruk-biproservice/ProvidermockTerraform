@@ -11,7 +11,7 @@ terraform {
     resource_group_name = "tfstateprovidermock"
     storage_account_name = "tfcodeprovidermock"
     container_name = "tfstatefile"
-    key = "value" # nicht definiert !!!!!!!!
+    key = "terraform.tfstate"
   }
 }
 
