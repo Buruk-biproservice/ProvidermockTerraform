@@ -48,8 +48,9 @@ Create Service Principal for GIT. (über GUI)
 
 # Create Terraform files. (Ressourcen über terraform erstellt)
 
-Create GitHub Action Workflow file. (terraform.yml)
+RUN " terraform init " local Creates .terraform.lock.hcl - file
 
 Push files to Git Repository.
 
+Create GitHub Action Workflow file. (terraform.yml)
 Run Workflow to Check
