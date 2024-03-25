@@ -33,6 +33,7 @@ Create Service Principal for GIT. (über GUI)
 
     Subscription ID: * [AZURE_SUBSCRIPTION_ID]
 
+}
 # AZ Login
 {
 
