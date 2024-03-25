@@ -33,5 +33,7 @@ Subscription ID: * [AZURE_SUBSCRIPTION_ID]
 
 
 #Create GitHub Action Workflow file. (terraform.yml)
+
 #Create Terraform files. (Ressourcen über terraform erstellt)
+
 #Push files to Git Repository.
