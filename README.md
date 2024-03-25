@@ -8,7 +8,9 @@ Converter und Providermock in Terraform
 
 # Github vorbereitungen 
 Create Azure Storage Account for tf State file. (über GUI public access)
+
 Create Azure Storage Container (über GUI)
+
 Create terraform terraform.tfstate file in Container (GUI upload)
 
 Create Service Principal for GIT. (über GUI)
@@ -31,14 +33,18 @@ Subscription ID: * [AZURE_SUBSCRIPTION_ID]
 
 {
     "clientSecret":  "******",         [AZURE_CREDENTIALS]
+
     "subscriptionId":  "******",       [AZURE_CREDENTIALS]
+
     "tenantId":  "******",             [AZURE_CREDENTIALS]
+
     "clientId":  "******"              [AZURE_CREDENTIALS]
 }
 
+# Create Terraform files. (Ressourcen über terraform erstellt)
 
-#Create GitHub Action Workflow file. (terraform.yml)
+Create GitHub Action Workflow file. (terraform.yml)
 
-#Create Terraform files. (Ressourcen über terraform erstellt)
+Push files to Git Repository.
 
-#Push files to Git Repository.
+Run Workflow to Check
