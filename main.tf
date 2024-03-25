@@ -36,7 +36,7 @@ resource "azurerm_container_registry" "acr" {
   name                   = "containerRegistryBipro"
   resource_group_name    = azurerm_resource_group.providermock.name
   location               = azurerm_resource_group.providermock.location
-  sku                    = "Premium" # change to Premium for georeplication
+  sku                    = "Standard" # change to Premium for georeplication
   admin_enabled          = true
   anonymous_pull_enabled = false #kritisch falls true!!!!!!!!!!!!!
 }
