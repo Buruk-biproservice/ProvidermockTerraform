@@ -19,19 +19,23 @@ Create Service Principal for GIT. (über GUI)
 # Create Github Repository. (privat)
 # Secrets über AZURE GUI und in Github gepflegt
 
-Client ID:	 * [AZURE_AD_CLIENT_ID]
-
-Tenant ID:	 * [AZURE_AD_TENANT_ID]
-
-Passwort
-
-Secret ID:	* 
-
-Value : 	* [AZURE_AD_CLIENT_SECRET]
-
-Subscription ID: * [AZURE_SUBSCRIPTION_ID]
-
 {
+    
+    Client ID:	 * [AZURE_AD_CLIENT_ID]
+
+    Tenant ID:	 * [AZURE_AD_TENANT_ID]
+
+    Passwort
+
+    Secret ID:	* 
+
+    Value : 	* [AZURE_AD_CLIENT_SECRET]
+
+    Subscription ID: * [AZURE_SUBSCRIPTION_ID]
+
+# AZ Login
+{
+
     "clientSecret":  "******",         [AZURE_CREDENTIALS]
 
     "subscriptionId":  "******",       [AZURE_CREDENTIALS]
@@ -39,6 +43,7 @@ Subscription ID: * [AZURE_SUBSCRIPTION_ID]
     "tenantId":  "******",             [AZURE_CREDENTIALS]
 
     "clientId":  "******"              [AZURE_CREDENTIALS]
+
 }
 
 # Create Terraform files. (Ressourcen über terraform erstellt)
