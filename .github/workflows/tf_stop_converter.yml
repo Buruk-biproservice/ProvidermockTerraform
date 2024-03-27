@@ -37,7 +37,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            description: Stop-AzContainerApp-Namebiproconverter-ResourceGroupNameprovidermock-SubscriptionIde5932067-ccf0-4a36-8af1-2664bfc74253
+            description: Stop-AzContainerApp -Name biproconverter -ResourceGroupName providermock -SubscriptionId e5932067-ccf0-4a36-8af1-2664bfc74253
         
       - name: terraform plan 
         id: plan
