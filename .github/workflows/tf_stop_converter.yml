@@ -36,7 +36,8 @@ jobs:
       - name: Stop Converter
         uses: azure/CLI@v1
         with:
-          inlineScript: Stop-AzContainerApp-Namebiproconverter-ResourceGroupNameprovidermock-SubscriptionIde5932067-ccf0-4a36-8af1-2664bfc74253
+          inlineScript: |
+            description: Stop-AzContainerApp-Namebiproconverter-ResourceGroupNameprovidermock-SubscriptionIde5932067-ccf0-4a36-8af1-2664bfc74253
         
       - name: terraform plan 
         id: plan
