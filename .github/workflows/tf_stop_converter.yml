@@ -5,64 +5,25 @@ name: 'Stop Converter'
 # Controls when the workflow will run
 on:
   workflow_dispatch:
-  pull_request:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  terraform:
+  copy:
     name: 'Stop Converter'
-    env:
-      ARM_CLIENT_ID: ${{secrets.AZURE_AD_CLIENT_ID}}
-      ARM_CLIENT_SECRET: ${{secrets.AZURE_AD_CLIENT_SECRET}}
-      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-      ARM_TENANT_ID: ${{secrets.AZURE_AD_TENANT_ID}}
-      # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    environment: dev
   
-
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
-  
-      - name: terraform init
-        id: init
-        run: terraform init
          
       - name: Login via Az module
         uses: azure/login@v1
         with:
           creds: '${{secrets.AZURE_CREDENTIALS}}'
-          
+      #soll den Converter stoppen   
       - name: Stop Converter
         uses: azure/CLI@v1
         with:
           inlineScript: |
+            # Azure Login erfolgreich
             az containerapp revision deactivate -g providermock --revision biproconverter--w2i27k9
-        
-      - name: terraform plan 
-        id: plan
-        run: terraform plan
-        
-      - name: terraform apply
-        id: apply
-        run: terraform apply -auto-approve
-
-   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hallo ich funktioniere!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
