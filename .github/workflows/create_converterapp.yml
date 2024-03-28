@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 'Deploy Converter'
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  copy:
+    name: 'Deploy Converter'
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+         
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: '${{secrets.AZURE_CREDENTIALS}}'
+      # Converter App wird gelöscht   
+      - name: Deploy Converter from container apps
+        uses: azure/CLI@v1
+        with:
+         inlineScript: |
+          # This command assumes you have logged in with az login
+          az containerapp create -n biproconverter -g providermock \
+          --image containerregistrybipro.azurecr.io/biproconnect-430-converter:1.9.51-26a87b8 --environment providermock-app-env \
+          --ingress external --target-port 8080 \
+          --registry-server containerregistrybipro.azurecr.io --registry-username containerRegistryBipro --registry-password rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+ \
+          --query properties.configuration.ingress.fqdn \
+          --min-replicas 1 --max-replicas 1
+      
