@@ -31,8 +31,7 @@ jobs:
       with:
         inlineScript: |
           # This command assumes you have logged in with az login
-          az containerapp delete -g monitoring -n prometheus --yes
-          az containerapp delete -g monitoring -n blackbox --yes
+          az containerapp delete -g providermock -n biproconverter --yes
 
     - name: terraform plan 
       id: plan
