@@ -28,7 +28,7 @@ jobs:
           # This command assumes you have logged in with az login
           az containerapp create -n biproconverter2 -g providermock \
           --image containerregistrybipro.azurecr.io/biproconnect-430-converter:1.9.51-26a87b8 --environment providermock-app-env \
-          --ingress external --target-port 8080 \
+          --ingress external --target-port 8081 \
           --registry-server ${{secrets.REGISTRY_SERVER}} --registry-username ${{secrets.REGISTRY_USERNAME}} --registry-password ${{secrets.REGISTRY_PASSWORD}} \
           --query properties.configuration.ingress.fqdn \
           --min-replicas 1 --max-replicas 1
