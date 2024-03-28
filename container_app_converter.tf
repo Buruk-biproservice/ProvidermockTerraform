@@ -1,6 +1,6 @@
 # Container App erzeugen für Providermock [Converter]
 resource "azurerm_container_app" "providermockapp-Converter" {
-  name                         = "biproconverter"
+  name                         = "biproconverter1"
   container_app_environment_id = azurerm_container_app_environment.providermock-app-env.id
   resource_group_name          = azurerm_resource_group.providermock.name
   revision_mode                = "Single"
