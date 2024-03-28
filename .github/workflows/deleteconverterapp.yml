@@ -1,0 +1,43 @@
+name: 'Delete Converterapp'
+ 
+on:
+  workflow_dispatch:
+ 
+jobs:
+  terraform:
+    name: 'Delete Converterapp'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@v3
+    - uses: hashicorp/setup-terraform@v2
+
+    - name: terraform init
+      id: init
+      run: terraform init
+       
+    - name: Login via Az module
+      uses: azure/login@v1
+      with:
+        creds: '${{secrets.AZURE_CREDENTIALS}}'
+
+    - name: remove Converter from container apps
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          # This command assumes you have logged in with az login
+          az containerapp delete -g monitoring -n prometheus --yes
+          az containerapp delete -g monitoring -n blackbox --yes
+
+    - name: terraform plan 
+      id: plan
+      run: terraform plan
+      
+    - name: terraform apply
+      id: apply
+      run: terraform apply -auto-approve
