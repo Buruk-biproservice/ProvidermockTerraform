@@ -29,7 +29,7 @@ resource "azurerm_container_app" "providermockapp-Converter" {
     min_replicas = 1
     max_replicas = 1
   }
-  secret {
+  secret {#Secrets benutzen
     name  = "containerregistrybiproazurecriopass"
     value = "rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+"
   }
