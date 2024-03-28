@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: 'Delete Converter'
+name: 'Delete Converter 1'
 
 # Controls when the workflow will run
 on:
@@ -9,7 +9,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   copy:
-    name: 'Delete Converter'
+    name: 'Delete Converter 1'
     runs-on: ubuntu-latest
   
     steps:
@@ -26,5 +26,5 @@ jobs:
         with:
          inlineScript: |
           # This command assumes you have logged in with az login
-          az containerapp delete -g providermock -n biproconverter --yes
+          az containerapp delete -g providermock -n biproconverter1 --yes
       
