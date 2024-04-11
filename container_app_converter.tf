@@ -6,7 +6,7 @@ resource "azurerm_container_app" "providermockapp-Converter" {
   revision_mode                = "Single"
  # Secretsbenutzen
   registry {
-    server               = "containerregistrybipro.azurecr.io"
+    server               = var.REGISTRY_SERVER #"containerregistrybipro.azurecr.io"
     username             = "containerRegistryBipro"
     password_secret_name = "containerregistrybiproazurecriopass"
   }
