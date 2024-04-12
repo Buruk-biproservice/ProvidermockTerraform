@@ -31,7 +31,7 @@ resource "azurerm_container_app" "providermockapp-Converter" {
   }
   secret {# TO DO Secrets benutzen
     name  = "containerregistrybiproazurecriopass"
-    value = var.registrycrb_secret #"rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+"
+    value = ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
   }
   tags = local.default_tags
 }
