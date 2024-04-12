@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "main" {
 
 data "azurerm_client_config" "current" {}
 
-ressource azurerm_key_vaul_access_policy "terraform user" {
+resource azurerm_key_vaul_access_policy "terraform user" {
   key_vault_id = azurerm_key_vault.main.id
   tenant_id = data.azurerm_client_config.current.tenant_id
   object_id = data.azurerm_client_config.current.object_id
