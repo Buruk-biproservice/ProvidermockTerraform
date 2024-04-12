@@ -7,7 +7,7 @@ resource "azurerm_container_app" "providermockapp-Converter" {
  # Secretsbenutzen
   registry {
     server               = azurerm_container_registry.acr.login_server
-    username             = azurerm_container_registry.acr.name #"containerRegistryBipro"
+    username             = azurerm_container_registry.acr.name
     password_secret_name = "containerregistrybiproazurecriopass"
   }
   ingress {
@@ -31,7 +31,7 @@ resource "azurerm_container_app" "providermockapp-Converter" {
   }
   secret {# TO DO Secrets benutzen
     name  = "containerregistrybiproazurecriopass"
-    value = var.registrycrb_secret #"rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+"
+    value = "rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+"
   }
   tags = local.default_tags
 }
