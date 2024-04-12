@@ -33,10 +33,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: '${{secrets.AZURE_CREDENTIALS}}'
-
-      - name: Output vars
-        run: |
-          echo "Registry Server" ${{ vars.REGISTRY_SERVER }}
           
       - name: terraform plan 
         id: plan
