@@ -34,6 +34,10 @@ jobs:
         with:
           creds: '${{secrets.AZURE_CREDENTIALS}}'
 
+      - name: Output vars
+        run: |
+          echo "Registry Server" ${{ vars.REGISTRY_SERVER }}
+          
       - name: terraform plan 
         id: plan
         run: terraform plan
