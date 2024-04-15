@@ -12,9 +12,10 @@ on:
         type: choice
         description: Select Converter to deploy
         options:
-        - foo
-        - bar
-        - baz
+        - 1.10.54-bbb0a67
+        - 1.9.51-26a87b8
+        - 1.8.45-e3708ea
+        - 1.6.30-bf4d2b9
         
 # This is a basic workflow to help you get started with Actions
 
