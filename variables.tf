@@ -1,4 +1,4 @@
-variable "registry_server_pwd" {
+variable "registry_secret" {
   type = string
   sensitive = true
 }
