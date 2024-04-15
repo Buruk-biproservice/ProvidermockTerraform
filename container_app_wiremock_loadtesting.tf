@@ -1,7 +1,7 @@
 resource "azurerm_container_app" "providermockapp-wiremock" {
   name                         = "biprowiremock"
   container_app_environment_id = azurerm_container_app_environment.providermock-app-env.id
-  resource_group_name          = azurerm_resource_group.providermock-rg.name
+  resource_group_name          = azurerm_resource_group.providermock.name
   revision_mode                = "Single"
 
   registry {
