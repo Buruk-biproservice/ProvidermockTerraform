@@ -1,12 +1,12 @@
-/*resource "azurerm_container_app" "providermockapp-wiremock" {
+resource "azurerm_container_app" "providermockapp-wiremock" {
   name                         = "biprowiremock"
   container_app_environment_id = azurerm_container_app_environment.providermock-app-env.id
   resource_group_name          = azurerm_resource_group.providermock-rg.name
   revision_mode                = "Single"
 
   registry {
-    server               = "containerregistrybipro.azurecr.io"
-    username             = "containerRegistryBipro"
+    server               = azurerm_container_registry.acr.login_server
+    username             = azurerm_container_registry.acr.name
     password_secret_name = "containerregistrybiproazurecriopass"
   
   }
@@ -14,7 +14,7 @@
   ingress {
     allow_insecure_connections = true
     external_enabled           = true
-    target_port                = 8080
+    target_port                = 8090
     traffic_weight {
       latest_revision          = true
       percentage               = 100
@@ -34,9 +34,9 @@
 
   secret { 
     name  = "containerregistrybiproazurecriopass"
-    value = "rGSAi+YRomxytwts3bP9Xn2pC0e/AG1eZZG6HY6Su0+ACRAwEqo+"
+    value = var.registry_secret
   }
 
   tags = local.default_tags
 
-}*/
+}
