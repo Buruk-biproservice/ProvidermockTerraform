@@ -1,0 +1,46 @@
+# This is a basic workflow that is manually triggered
+
+name: Auswahl Converter 2
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:    
+      choice:
+        type: choice
+        description: Select Converter to deploy
+        options:
+        - 1.10.54-bbb0a67
+        - 1.9.51-26a87b8
+        - 1.8.45-e3708ea
+        - 1.6.30-bf4d2b9
+        
+# This is a basic workflow to help you get started with Actions
+
+jobs:
+  copy:
+    name: 'Select Converter 2'
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+         
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: '${{secrets.AZURE_CREDENTIALS}}'
+      # Converter App wird gelöscht   
+      - name: Deploy Converter from container apps
+        uses: azure/CLI@v1
+        with:
+         inlineScript: |
+          # This command assumes you have logged in with az login
+          az containerapp create -n biproconverter2 -g providermock \
+          --image containerregistrybipro.azurecr.io/biproconnect-430-converter:${{ inputs.choice }} --environment providermock-app-env \
+          --ingress external --target-port 8081 \
+          --registry-server ${{secrets.REGISTRY_SERVER}} --registry-username ${{secrets.REGISTRY_USERNAME}} --registry-password ${{secrets.REGISTRY_PASSWORD}} \
+          --query properties.configuration.ingress.fqdn \
+          --min-replicas 1 --max-replicas 1
