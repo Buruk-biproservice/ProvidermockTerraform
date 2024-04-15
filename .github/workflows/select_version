@@ -6,7 +6,7 @@ name: 'Select Converter 2'
 on:
   workflow_dispatch:
   inputs:
-    name: 'Version'
+    name:
     description:'Select Converter Version'
     default: '1.9.51-26a87b8'
     required: true
