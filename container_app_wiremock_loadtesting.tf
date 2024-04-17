@@ -23,8 +23,8 @@ resource "azurerm_container_app" "providermockapp-wiremock" {
 
   template {
     container {
-      name   = "wiremock-loadtesting"
-      image  = "containerregistrybipro.azurecr.io/bipro/wiremock-loadtesting:latest"
+      name   = "bipro/wiremock"
+      image  = "containerregistrybipro.azurecr.io/bipro/wiremock:latest"
       cpu    = 1.0
       memory = "2Gi"
     }
